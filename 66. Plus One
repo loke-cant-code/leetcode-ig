@@ -1,0 +1,17 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        x=len(digits)
+        if digits[x-1]==9: 
+            digits[x-1]=0
+            while(x-1>0):
+                x-=1
+                if digits[x-1]==9:
+                    digits[x-1]=0
+                else:
+                    digits[x-1]+=1
+                    return digits
+            digits.insert(0,1)
+        else: 
+            digits[x-1]+=1
+
+        return digits
