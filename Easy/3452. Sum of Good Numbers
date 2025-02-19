@@ -1,0 +1,25 @@
+class Solution:
+    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
+        tot = 0
+        for i in range(len(nums)):
+            # Reinitialize flag over each iteration
+            # We will use this to find if the numer is a good number
+            flag=0 
+
+            # To not run out of list range, also update flag as we still count if elements don't exist
+            if i-k<0:
+                flag +=1
+            else: 
+                if nums[i]>nums[i-k]:
+                    flag +=1
+            
+            # To not run out of list range, check with max index
+            if i+k>len(nums)-1:
+                flag+=1
+            else: 
+                if nums[i]>nums[i+k]:
+                    flag +=1
+            # We get flag 2 if both numbers are less than the number we consider (if they exist)
+            if flag==2:
+                tot += nums[i]
+        return tot
