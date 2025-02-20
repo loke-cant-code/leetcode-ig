@@ -1,0 +1,22 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+
+        # stac will be our list that for the time being stores the element that is new
+        stac = []
+
+        # rem will hold all the values that are duplicated
+        rem = []
+
+        for i in nums:
+
+            # it is a new element if don't see it in stac / rem
+            if i not in stac and i not in rem:
+                stac.append(i)
+            
+            # if its not new, we simply remove it from stac and append it to rem
+            else: 
+                stac.remove(i)
+                rem.append(i)
+
+        # since only the unique number will be left in stac, we just return first value
+        return stac[0]
