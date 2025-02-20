@@ -1,0 +1,13 @@
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+
+        # Convert to binary and remove first 2 parts (0b)
+        bi=bin(n)[2::]
+        count = 0
+
+        # increment count when 1 is found
+        for i in bi:
+            if i=="1":
+                count+=1
+        
+        return count
