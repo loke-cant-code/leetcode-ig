@@ -1,0 +1,22 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # mini will be where we would buy the stock. We initialize it with the first element
+        mini = prices[0]
+
+        # we will use this list to append potential profits
+        profit_list=[]
+        profit = 0
+        for i in range(1,len(prices)):
+            # when we have a lower stock price, we replace mini with this new value
+            # however, we need to append the potential profit we made so far as we are trying to solve in 1 iteration
+            if prices[i] < mini:
+                profit_list.append(profit)
+                mini = prices[i]
+            # update profit everytime we find higher stock price
+            elif prices[i] - mini > profit:
+                profit = prices[i] - mini
+
+        # append whatever value remains in profit
+        profit_list.append(profit)
+        # return max profit from the list 
+        return max(profit_list)
