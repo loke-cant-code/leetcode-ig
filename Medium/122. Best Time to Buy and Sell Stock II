@@ -1,0 +1,16 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # mini is when we buy stocks
+        mini = prices[0]
+        profit = 0
+        for i in range(1,len(prices)):
+            # when we have a lower stock price, we replace mini with this new value
+            if prices[i] < mini:
+                mini = prices[i]
+            # sell everytime the current day stock price is higher than mini
+            # also replace mini value with current day stock price in case we see an upward trend
+            elif prices[i] > mini:
+                profit += prices[i] - mini
+                mini = prices[i]
+                
+        return profit
