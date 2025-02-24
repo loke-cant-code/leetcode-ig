@@ -1,0 +1,21 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        # binary search
+        mini = 0
+        maxi = len(nums)-1
+        # imp : will be our exit condition
+        while mini <= maxi:
+
+            # you can't add to 2147483647 (max int value) so we do this instead
+            mid = mini + (maxi - mini)//2
+            # element found
+            if nums[mid] == target:
+                return mid
+            # reallocate the search range (using +1 for efficiency and to help break our loop)
+            elif nums[mid] < target:
+                mini = mid +1
+            else: 
+                maxi = mid -1
+        # insert position will also be mini if element was not found
+        return mini
+            
