@@ -1,0 +1,12 @@
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # to remove dupes
+        win=set(nums)
+        # for manipulation
+        win1=list(win)
+        x=len(win1)
+        win1.sort()
+        if x<3:
+            return win1[-1] # last element
+        else:
+            return win1[-3] # 3rd last element   
