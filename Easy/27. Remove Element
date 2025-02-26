@@ -1,0 +1,18 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        x = len(nums)
+        # Two Pointer method
+        start = 0
+        end = x - 1
+        for i in range(x):
+            if nums[start] == val:
+                # if nums[start] is val, then we switch it with an element from the end
+                nums[start] = nums[end]
+                # we decrement end pointer value as it has replaced a 'val'
+                end = end - 1
+            else: 
+                # in order to make sure that the swtiched element is not 'val' 
+                # we only append start pointer in the else statement
+                start += 1
+        return start
+        
