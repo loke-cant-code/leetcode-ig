@@ -1,0 +1,14 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        # pointer that we dynamically change
+        start = 0 
+        for i in range(len(nums)):
+            # we skip if the element at start index is same as the element in i
+            if nums[i] == nums[start]:
+                continue
+            # when its a different element, we append start and copy that element to this start index
+            else:
+                start += 1
+                nums[start] = nums[i]
+        # we return start + 1 because they ask the number of unique elements (start was index hence started with 0)        
+        return start + 1        
