@@ -1,0 +1,19 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        # since numRows>=1 we initialize first row
+        triangle = [[1]]
+        for i in range(1,numRows):
+            # row array is temp array to append each row to triangle
+            row = []
+            # first value of a row in pascal's triange is always 1 so append 1 to row
+            row.append(1)
+            # since ith row will have i elements, upper limit of range is i
+            for j in range(1,i):
+                # previous row jth element + j-1 th element gives the required value
+                x = triangle[i-1][j-1] + triangle[i-1][j]
+                row.append(x)
+            # last value is also always 1
+            row.append(1)
+            # append row after each i iteration
+            triangle.append(row)            
+        return triangle            
